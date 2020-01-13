@@ -1,11 +1,15 @@
+//instanciando
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 //string de conexão
-const url = 'mongodb+srv://user_admin:Euleoterio10@clusterapi-tbfhq.mongodb.net/test?retryWrites=true';
-const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500,  poolSize: 5, useNewUrlParser: true };
+//mongodb+srv://euleoterio:<password>@clusterapi-tbfhq.mongodb.net/test?retryWrites=true&w=majority
+const url = 'mongodb+srv://euleoterio:euleoteriovini10@clusterapi-tbfhq.mongodb.net/test?retryWrites=true';
+//Connectio curse
+//const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500,  poolSize: 5, useNewUrlParser: true };
+const options = { poolSize: 5, useUnifiedTopology: true, useNewUrlParser: true };
 
 mongoose.connect(url, options);
 mongoose.set('useCreateIndex',true);
@@ -36,6 +40,7 @@ app.use('/', indexRoute);
 app.use('/users', usersRoute);
 
 // Primeira AULA
+// '/'é local host
 // app.get('/', (req, res)  => {
 //     let obj = req.query;
 
