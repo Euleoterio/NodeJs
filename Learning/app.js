@@ -3,10 +3,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const config = require('./config/config');
 
 //string de conexão
-//mongodb+srv://euleoterio:<password>@clusterapi-tbfhq.mongodb.net/test?retryWrites=true&w=majority
-const url = 'mongodb+srv://euleoterio:euleoteriovini10@clusterapi-tbfhq.mongodb.net/test?retryWrites=true';
+//busca string de conexão do config
+const url = config.bd_string;
 //Connectio curse
 //const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500,  poolSize: 5, useNewUrlParser: true };
 const options = { poolSize: 5, useUnifiedTopology: true, useNewUrlParser: true };
